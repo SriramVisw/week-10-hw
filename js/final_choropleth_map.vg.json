@@ -3,24 +3,43 @@
   "title": "Life Expectancy by Countries in 2019",
   "width": 800,
   "height": 600,
+  "data": {
+    "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_110m_admin_0_countries"
+    }
+  },
+  "projection": {
+    "type": "equalEarth",
+    "rotate": [
+      -130,
+      0,
+      0
+    ]
+  },
   "layer": [
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/SriramVisw/FIT3179-week9-Homework/main/data/ne_110m_graticules_30.topojson",
-        "format": {
-          "type": "topojson",
-          "feature": "ne_110m_graticules_30"
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.NAME",
+          "as": "note"
         }
-      },
+      ],
       "mark": {
         "type": "geoshape",
-        "stroke": "lightgrey",
-        "fill": null
+        "fill": "lightgrey",
+        "stroke": "grey"
+      },
+      "encoding": {
+        "tooltip": {
+          "field": "note"
+        }
       }
     },
     {
       "data": {
-        "url": "https://raw.githubusercontent.com/SriramVisw/FIT3179-week9-Homework/main/data/ne_110m_admin_0_countries.topojson.txt",
+        "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
         "format": {
           "type": "topojson",
           "feature": "ne_110m_admin_0_countries"
@@ -49,12 +68,9 @@
           }
         }
       ],
-      "projection": {
-        "type": "mollweide"
-      },
       "mark": {
         "type": "geoshape",
-        "stroke": "lightgrey"
+        "stroke": "lightgray"
       },
       "encoding": {
         "color": {
@@ -66,7 +82,7 @@
             "selection": "Country",
             "value": 1
           },
-          "value": 0.2
+          "value": 0.3
         },
         "tooltip": [
           {
@@ -79,6 +95,54 @@
             "type": "quantitative"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/KaneSec/vega_lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.ADM0_A3",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/SriramVisw/FIT3179-week9-Homework/main/data/lifeExpectancy1.csv"
+            },
+            "key": "Country Code",
+            "fields": [
+              "Life expectancy at birth"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "fontSize": 11.5,
+        "dx": 30,
+        "dy": 70,
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "text": {
+          "field": "properties['NAME']",
+          "type": "nominal"
+        },
+        "color": {
+          "value": "white"
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum['Life expectancy at birth'] == '82.90'",
+            "value": 1
+          },
+          "value": 0
+        }
       }
     }
   ]
