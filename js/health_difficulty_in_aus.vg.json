@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Ease of Access to Medical faciltites in Australia: survey",
     "data": {
         "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/Normalised_long_format_Navigating_the_healthcare.csv"
     },
@@ -46,11 +47,6 @@
                 "field": "Age group (years)",
                 "type": "ordinal",
                 "title": "Age-group"
-            },
-            {
-                "field": "Difficult",
-                "type": "nominal",
-                "title": "Ease of Access"
             },
             {
                 "field": "Difficult (%)",
