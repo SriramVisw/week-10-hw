@@ -8,7 +8,7 @@
     "view": {
         "strokeWidth": 0
     },
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {
         "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/Australia_Health_Budget_Area_chart1.csv"
     },
@@ -46,88 +46,144 @@
             "filter": "state_selection == null || datum.State == state_selection"
         }
     ],
-    "mark": "area",
-    "encoding": {
-        "x": {
-            "timeUnit": "year",
-            "field": "Year",
-            "axis": {
-                "format": "%Y",
-                "domainColor": "white",
-                "tickColor": "lightgray",
-                "labelColor": "gray",
-                "titleColor": "gray",
-                "titleFontWeight": "bold",
-                "titleFont": "open sans"
-            },
-            "title": ""
-        },
-        "y": {
-            "aggregate": "sum",
-            "field": "Expenditure",
-            "title": "Expenditure ($M)",
-            "axis": {
-                "gridDash": [
-                    10,
-                    10
-                ],
-                "domainColor": "white",
-                "tickColor": "white",
-                "labelColor": "gray",
-                "titleColor": "gray",
-                "titleFontWeight": "bold",
-                "titleFont": "open sans"
+    "layer": [
+        {
+            "mark": "area",
+            "encoding": {
+                "x": {
+                    "timeUnit": "year",
+                    "field": "Year",
+                    "axis": {
+                        "format": "%Y",
+                        "domainColor": "white",
+                        "tickColor": "lightgray",
+                        "labelColor": "gray",
+                        "titleColor": "gray",
+                        "titleFontWeight": "bold",
+                        "titleFont": "open sans"
+                    },
+                    "title": ""
+                },
+                "y": {
+                    "aggregate": "sum",
+                    "field": "Expenditure",
+                    "title": "Expenditure ($M)",
+                    "axis": {
+                        "gridDash": [
+                            10,
+                            10
+                        ],
+                        "domainColor": "white",
+                        "tickColor": "white",
+                        "labelColor": "gray",
+                        "titleColor": "gray",
+                        "titleFontWeight": "bold",
+                        "titleFont": "open sans"
+                    }
+                },
+                "color": {
+                    "field": "State",
+                    "sort": [
+                        "NSW",
+                        "VIC",
+                        "QLD",
+                        "WA",
+                        "SA",
+                        "TAS",
+                        "ACT",
+                        "NT"
+                    ],
+                    "scale": {
+                        "scheme": "category20b"
+                    },
+                    "title": "States",
+                    "legend": {
+                        "title": "States",
+                        "titleFont": "open sans",
+                        "labelFont": "open sans",
+                        "titleColor": "gray",
+                        "labelColor": "gray",
+                        "orient": "bottom",
+                        "direction": "horizontal"
+                    }
+                },
+                "order": {
+                    "aggregate": "sum",
+                    "field": "Difficult",
+                    "type": "quantitative"
+                },
+                "tooltip": [
+                    {
+                        "field": "Year",
+                        "type": "temporal",
+                        "title": "Year",
+                        "format": "%Y"
+                    },
+                    {
+                        "field": "State",
+                        "type": "nominal",
+                        "title": "State"
+                    },
+                    {
+                        "field": "Expenditure",
+                        "type": "quantitative",
+                        "title": "Expenditure in Millions",
+                        "format": ","
+                    }
+                ]
             }
         },
-        "color": {
-            "field": "State",
-            "sort": [
-                "NSW",
-                "VIC",
-                "QLD",
-                "WA",
-                "SA",
-                "TAS",
-                "ACT",
-                "NT"
-            ],
-            "scale": {
-                "scheme": "category20b"
+        {
+            "mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "middle",
+                "fontSize": 8,
+                "dx": 20,
+                "dy": 80
             },
-            "title": "States",
-            "legend": {
-                "title": "States",
-                "titleFont": "open sans",
-                "labelFont": "open sans",
-                "titleColor": "gray",
-                "labelColor": "gray",
-                "orient": "bottom",
-                "direction": "horizontal"
+            "encoding": {
+                "text": {
+                    "field": "State",
+                    "type": "nominal"
+                },
+                "color": {
+                    "value": "white"
+                },
+                "opacity": {
+                    "condition": {
+                        "test": "datum['State'] == 'NSW'",
+                        "value": 1
+                    },
+                    "value": 0
+                }
             }
         },
-        "order": {
-            "aggregate": "sum",
-            "field": "Difficult",
-            "type": "quantitative"
-        },
-        "tooltip": [
-            {
-                "field": "Year",
-                "type": "temporal",
-                "title": "Year",
-                "format": "%Y"
+        {
+            "mark": {
+                "type": "text",
+                "align": "right",
+                "baseline": "middle",
+                "fontSize": 8,
+                "dx": 15,
+                "dy": 30
             },
-            {
-                "field": "State",
-                "type": "nominal",
-                "title": "State"
-            },
-            {
-                "field": "Expenditure",
-                "type": "quantitative",
-                "title": "Expenditure in Millions",
-                "format": ","
+            "encoding": {
+                "text": {
+                    "field": "State",
+                    "type": "nominal"
+                },
+                "color": {
+                    "value": "white"
+                },
+                "opacity": {
+                    "condition": {
+                        "test": "datum['State'] == 'VIC'",
+                        "value": 1
+                    },
+                    "value": 0
+                }
             }
-        ]
-    }
+        }
+    ]
 }
