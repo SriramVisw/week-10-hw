@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Health Expenses Breakdown",
+    "width": 100,
+    "height": 200,
+    "data": {
+        "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/Healthcare%20Split.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "field": "Year",
+            "type": "nominal",
+            "title": ""
+        },
+        "y": {
+            "field": "Amount",
+            "type": "quantitative",
+            "title": "Expenses ($m)"
+        },
+        "color": {
+            "field": "Services",
+            "type": "nominal",
+            "scale": {
+                "domain": [
+                    "Medical services and benefits",
+                    "Pharmaceutical benefits and services",
+                    "Assistance to the States for public hospitals",
+                    "Hospital services",
+                    "Health services",
+                    "General administration",
+                    "Aboriginal and Torres Strait Islander health"
+                ],
+                "range": [
+                    "#e7ba52",
+                    "#c7c7c7",
+                    "#aec7e8",
+                    "#1f77b4",
+                    "#9467bd",
+                    "orange",
+                    "brown"
+                ]
+            },
+            "title": "Expenses"
+        },
+        "tooltip": [
+            {
+                "field": "Services",
+                "type": "nominal",
+                "title": "Expense"
+            },
+            {
+                "field": "Amount",
+                "type": "quantitative",
+                "title": "Expenditure in Millions",
+                "format": ","
+            }
+        ]
+    }
+}
