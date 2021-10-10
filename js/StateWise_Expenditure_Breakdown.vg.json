@@ -11,7 +11,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
     "width": "container",
     "data": {
-        "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/Australia_Health_Budget_Area_chart.csv"
+        "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/Australia_Health_Budget_Area_chart1.csv"
     },
     "params": [
         {
@@ -47,15 +47,6 @@
             "filter": "state_selection == null || datum.State == state_selection"
         }
     ],
-    "selection": {
-        "continent_highlight": {
-            "type": "multi",
-            "fields": [
-                "Continent"
-            ],
-            "bind": "legend"
-        }
-    },
     "mark": "area",
     "encoding": {
         "x": {
@@ -114,6 +105,11 @@
                 "orient": "bottom",
                 "direction": "horizontal"
             }
+        },
+        "order": {
+            "aggregate": "sum",
+            "field": "Difficult",
+            "type": "quantitative"
         },
         "tooltip": [
             {
