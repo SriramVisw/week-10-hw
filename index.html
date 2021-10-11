@@ -16,10 +16,6 @@
 
 <div id="area_chart"></div>
 
-<div id="area_chart"></div>
-
-<div id="area_chart"></div>
-
 <script type="text/javascript">
 
   var spec2 = "js/final_choropleth_map.vg.json";
@@ -27,21 +23,12 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  var spec3 = "js/World_Healthcare_employment.vg.json";
+  var spec3 = "js/StateWise_Expenditure_Breakdown.vg.json";
   vegaEmbed('#area_chart', spec3).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  var spec4 = "js/StateWise_Expenditure_Breakdown.vg.json";
-  vegaEmbed('#area_chart', spec4).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-
-  var spec5 = "js/StateWise_Expenditure_Breakdown_selection_not_working.vg.json";
-  vegaEmbed('#area_chart', spec5).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  }).catch(console.error);
-
 </script>
+
 </body>
 </html>
