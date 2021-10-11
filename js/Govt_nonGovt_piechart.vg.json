@@ -1,18 +1,49 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "A simple pie chart with embedded data.",
+    "title": "Source of funds",
     "data": {
         "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/contributions%20pie%20chart.csv"
     },
+    "params": [
+        {
+            "name": "Source_highlight",
+            "select": {
+                "type": "point",
+                "fields": [
+                    "Source of Funds"
+                ]
+            },
+            "bind": "legend"
+        }
+    ],
     "mark": "arc",
     "encoding": {
+        "opacity": {
+            "condition": {
+                "param": "Source_highlight",
+                "value": 1
+            },
+            "value": 0.2
+        },
         "theta": {
             "field": "Expenditure",
             "type": "quantitative"
         },
         "color": {
             "field": "Source of Funds",
-            "type": "nominal"
+            "type": "nominal",
+            "scale": {
+                "domain": [
+                    "Government",
+                    "Non-Government"
+                ],
+                "range": [
+                    "#e7ba52",
+                    "#646b60"
+                ]
+            },
+            "title": "Source of Funds"
         },
         "tooltip": [
             {
@@ -23,7 +54,7 @@
             {
                 "field": "Expenditure",
                 "type": "quantitative",
-                "title": "Expenditure"
+                "title": "Expenditure in Billions"
             },
             {
                 "field": "Contribution",

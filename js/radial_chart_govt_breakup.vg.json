@@ -1,0 +1,67 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Government Funding break up",
+    "data": {
+        "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/govt%20split.csv"
+    },
+    "params": [
+        {
+            "name": "Expenditure_highlight",
+            "select": {
+                "type": "point",
+                "fields": [
+                    "Area of Expenditure"
+                ]
+            },
+            "bind": "legend"
+        }
+    ],
+    "layer": [
+        {
+            "mark": {
+                "type": "arc",
+                "innerRadius": 20,
+                "stroke": "#ffffff"
+            }
+        }
+    ],
+    "encoding": {
+        "opacity": {
+            "condition": {
+                "param": "Expenditure_highlight",
+                "value": 1
+            },
+            "value": 0.2
+        },
+        "tooltip": [
+            {
+                "field": "Area of Expenditure",
+                "type": "nominal",
+                "title": "Area of Expenditure"
+            },
+            {
+                "field": "Expenditure",
+                "type": "quantitative",
+                "title": "Expenditure in Millions",
+                "format": ","
+            }
+        ],
+        "theta": {
+            "field": "Expenditure",
+            "type": "quantitative",
+            "stack": true
+        },
+        "radius": {
+            "field": "Expenditure",
+            "scale": {
+                "type": "sqrt",
+                "zero": true,
+                "rangeMin": 20
+            }
+        },
+        "color": {
+            "field": "Area of Expenditure",
+            "type": "nominal"
+        }
+    }
+}

@@ -50,6 +50,18 @@
     "layer": [
         {
             "mark": "area",
+            "params": [
+                {
+                    "name": "state_highlight",
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "State"
+                        ]
+                    },
+                    "bind": "legend"
+                }
+            ],
             "encoding": {
                 "x": {
                     "timeUnit": "year",
@@ -107,6 +119,13 @@
                         "orient": "bottom",
                         "direction": "horizontal"
                     }
+                },
+                "opacity": {
+                    "condition": {
+                        "param": "state_highlight",
+                        "value": 1
+                    },
+                    "value": 0.2
                 },
                 "order": {
                     "aggregate": "sum",
