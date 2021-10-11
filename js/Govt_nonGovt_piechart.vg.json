@@ -1,0 +1,35 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple pie chart with embedded data.",
+    "data": {
+        "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/contributions%20pie%20chart.csv"
+    },
+    "mark": "arc",
+    "encoding": {
+        "theta": {
+            "field": "Expenditure",
+            "type": "quantitative"
+        },
+        "color": {
+            "field": "Source of Funds",
+            "type": "nominal"
+        },
+        "tooltip": [
+            {
+                "field": "Source of Funds",
+                "type": "nominal",
+                "title": "Source of Funds"
+            },
+            {
+                "field": "Expenditure",
+                "type": "quantitative",
+                "title": "Expenditure"
+            },
+            {
+                "field": "Contribution",
+                "type": "quantitative",
+                "title": "Percentage of Contribution"
+            }
+        ]
+    }
+}
