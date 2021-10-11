@@ -6,7 +6,7 @@
     },
     "transform": [
         {
-            "calculate": "if(datum.Difficult === 'Always easy', 0, if(datum.site === 'Usuallu easy', 1, if(datum.site === 'Difficult', 2, 3)))",
+            "calculate": "if(datum.Difficult === 'Always easy', 0, if(datum.Difficult === 'Usually easy', 1, if(datum.Difficult === 'Difficult', 2, 3)))",
             "as": "DifficultyOrder"
         }
     ],
