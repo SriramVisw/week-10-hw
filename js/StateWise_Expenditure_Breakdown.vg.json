@@ -5,6 +5,7 @@
         "fontSize": 17,
         "color": "black"
     },
+    "width": 300,
     "view": {
         "strokeWidth": 0
     },

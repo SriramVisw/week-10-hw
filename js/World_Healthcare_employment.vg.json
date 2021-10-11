@@ -1,0 +1,118 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/SriramVisw/week-10-hw/master/data/World%20Healthcare%20employment.csv"
+    },
+    "width": 500,
+    "title": {
+        "text": "Top 20 OECD Countries with the most Healthcare workers",
+        "font": "sans-serif",
+        "fontSize": 17,
+        "color": "black"
+    },
+    "encoding": {
+        "x": {
+            "field": "Employment Density",
+            "type": "quantitative",
+            "title": "Employment Density per 1000 people",
+            "axis": {
+                "gridDash": [
+                    10,
+                    10
+                ],
+                "domainColor": "white",
+                "tickColor": "white",
+                "labelColor": "black",
+                "titleColor": "black",
+                "titleFont": "sans-serif"
+            }
+        },
+        "y": {
+            "field": "Country",
+            "type": "nominal",
+            "title": "",
+            "sort": null,
+            "axis": {
+                "domainColor": "white",
+                "tickColor": "white",
+                "labelColor": "black",
+                "titleColor": "black",
+                "titleFont": "sans-serif"
+            }
+        },
+        "color": {
+            "condition": {
+                "param": "hover",
+                "field": "Country",
+                "type": "nominal",
+                "legend": null
+            },
+            "value": "grey"
+        },
+        "opacity": {
+            "condition": {
+                "param": "hover",
+                "value": 1
+            },
+            "value": 0.6
+        },
+        "tooltip": [
+            {
+                "field": "Country",
+                "type": "nominal",
+                "title": "Country"
+            },
+            {
+                "field": "Employment Density",
+                "type": "quantitative",
+                "title": "Employment Density"
+            }
+        ]
+    },
+    "layer": [
+        {
+            "description": "transparent layer to make it easier to trigger selection",
+            "params": [
+                {
+                    "name": "hover",
+                    "value": [
+                        {
+                            "Country": "Australia"
+                        }
+                    ],
+                    "select": {
+                        "type": "point",
+                        "fields": [
+                            "Country"
+                        ],
+                        "on": "mouseclick"
+                    }
+                }
+            ],
+            "mark": {
+                "type": "bar",
+                "strokeWidth": 8,
+                "stroke": "transparent"
+            }
+        },
+        {
+            "mark": "bar"
+        },
+        {
+            "mark": {
+                "type": "text",
+                "font": "sans-serif",
+                "fontWeight": "bold",
+                "align": "left",
+                "baseline": "middle",
+                "dx": 3
+            },
+            "encoding": {
+                "text": {
+                    "field": "Employment Density",
+                    "type": "quantitative"
+                }
+            }
+        }
+    ]
+}
